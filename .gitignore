@@ -1,0 +1,33 @@
+# Clojure build artifacts
+/classes/
+/target/
+*.class
+
+# Clojure CLI tools cache
+/.cpcache/
+/.clj-kondo/
+/.shadow-cljs/
+
+# nREPL
+.nrepl-port
+
+# Emacs files
+*.elc
+*~
+.#*
+nrepl-port
+cider-repl-history
+
+# MacOS metadata
+.DS_Store
+
+# Test reports and temp files
+/test-output/
+tmp/
+*.log
+
+# Ignore Clojure temp eval files
+repl-*.edn
+
+# Ignore Clojure CLI execution error dumps
+/clojure-*.edn
