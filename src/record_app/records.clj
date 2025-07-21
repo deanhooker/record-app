@@ -24,7 +24,8 @@
    :favorite-color favorite-color
    :date-of-birth (parse-date date-of-birth)})
 
-(defn- parse-line
+(defn parse-line
+  "Parse a single delimited line into a record."
   [line]
   (let [delimiter (find-delimiter line)
         tokens (->> (str/split line (re-pattern delimiter))

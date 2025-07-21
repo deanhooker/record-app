@@ -29,27 +29,26 @@
         (is (= "\\s+" (find-delimiter line)))))))
 
 (deftest parse-line-test
-  (let [parse-line #'record-app.records/parse-line
-        test-record (#'record-app.records/->record
+  (let [test-record (#'record-app.records/->record
                      "America" "Andy" "andy.america@yopmail.com" "blue" "2/2/1981")]
     (testing "A good, space-delimited line is correctly parsed"
       (let [line "America Andy andy.america@yopmail.com blue 2/2/1981"]
-        (is (= (parse-line line)
+        (is (= (records/parse-line line)
                test-record))))
     (testing "A good, comma-delimited line is correctly parsed"
       (let [line "America,Andy,andy.america@yopmail.com,blue,2/2/1981"]
-        (is (= (parse-line line)
+        (is (= (records/parse-line line)
                test-record))))
     (testing "A good, pipe-delimited line is correctly parsed"
       (let [line "America|Andy|andy.america@yopmail.com|blue|2/2/1981"]
-        (is (= (parse-line line)
+        (is (= (records/parse-line line)
                test-record))))
     (testing "A bad line, with too many columns, throws an exception"
       (let [line "America|Andy|andy.america@yopmail.com|blue|2/2/1981|some_additional_data"]
-        (is (thrown? Exception (parse-line line)))))
+        (is (thrown? Exception (records/parse-line line)))))
     (testing "A bad line, with too few columns, throws an exception"
       (let [line "America|Andy|andy.america@yopmail.com|blue"]
-        (is (thrown? Exception (parse-line line)))))))
+        (is (thrown? Exception (records/parse-line line)))))))
 
 (deftest parse-lines-test
   (testing "Commented and empty lines are filtered"
