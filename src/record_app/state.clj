@@ -2,5 +2,7 @@
 
 (def records (atom []))
 
-(defn clear-records! []
+(defn clear-records!
+  "Clears the app state."
+  []
   (reset! records []))

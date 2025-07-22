@@ -4,5 +4,7 @@
    [record-app.routes :refer [app]])
   (:gen-class))
 
-(defn -main [& _]
-  (run-jetty app {:port 3000}))
+(defn -main
+  "Starts the HTTP server on port 3000."
+  [& _]
+  (run-jetty app {:port 3000 :join? false})) ; TODO: join? true for prod
